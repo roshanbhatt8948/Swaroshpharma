@@ -1,0 +1,2468 @@
+/* ==========================================================================
+   SWAROSH PHARMACEUTICALS PRIVATE LIMITED - MODERN CORPORATE STYLESHEET
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & ROOT VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+    /* Color Palette */
+    --primary-navy: #0B1F33;
+    --primary-navy-light: #162E4A;
+    --secondary-blue: #1E40AF;
+    --accent-blue: #2563EB;
+    --pharma-green: #00A884;
+    --pharma-green-dark: #059669;
+    --pharma-green-light: #E6F6F3;
+    
+    /* Neutrals */
+    --bg-white: #FFFFFF;
+    --bg-slate: #F8FAFC;
+    --bg-light-gray: #F1F5F9;
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --text-light: #94A3B8;
+    --border-color: #E2E8F0;
+    --border-dark: #1E293B;
+
+    /* Status Colors */
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* Typography */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Shadows & Effects */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(11, 31, 51, 0.08), 0 2px 4px -1px rgba(11, 31, 51, 0.04);
+    --shadow-lg: 0 10px 25px -5px rgba(11, 31, 51, 0.1), 0 8px 10px -6px rgba(11, 31, 51, 0.04);
+    --shadow-xl: 0 20px 35px -10px rgba(11, 31, 51, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.4);
+
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background-color: var(--bg-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-navy);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+a {
+    color: var(--pharma-green);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--pharma-green-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Helper Container */
+.container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Section Wrapper */
+.section {
+    padding: 5rem 0;
+}
+
+.bg-light {
+    background-color: var(--bg-slate);
+}
+
+.bg-navy {
+    background-color: var(--primary-navy);
+    color: var(--bg-white);
+}
+
+/* Section Header Shared Utility */
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.sub-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pharma-green);
+    background-color: var(--pharma-green-light);
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 0.75rem;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--primary-navy);
+    letter-spacing: -0.02em;
+}
+
+.heading-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pharma-green), var(--secondary-blue));
+    border-radius: 2px;
+    margin: 0.75rem 0 1.25rem 0;
+}
+
+.text-center .heading-line {
+    margin: 0.75rem auto 1.25rem auto;
+}
+
+.section-lead {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+}
+
+.max-w-3xl {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+.items-center { align-items: center; }
+.text-center { text-align: center; }
+
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+.mt-12 { margin-top: 3rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+/* Text Utilities */
+.text-muted { color: var(--text-muted); }
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 60%, var(--pharma-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   3. BUTTONS & BADGES
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-navy);
+    color: var(--bg-white);
+    border-color: var(--primary-navy);
+    box-shadow: 0 4px 12px rgba(11, 31, 51, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-navy-light);
+    border-color: var(--primary-navy-light);
+    color: var(--bg-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(11, 31, 51, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--pharma-green);
+    color: var(--bg-white);
+    border-color: var(--pharma-green);
+    box-shadow: 0 4px 12px rgba(0, 168, 132, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: var(--pharma-green-dark);
+    border-color: var(--pharma-green-dark);
+    color: var(--bg-white);
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+.btn-lg {
+    padding: 0.9rem 2rem;
+    font-size: 1.05rem;
+    border-radius: var(--radius-lg);
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--pharma-green);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    padding: 0;
+    transition: var(--transition-fast);
+}
+
+.btn-text:hover {
+    color: var(--primary-navy);
+    gap: 0.6rem;
+}
+
+.w-full { width: 100%; }
+
+/* --------------------------------------------------------------------------
+   4. TOP ANNOUNCEMENT BAR & HEADER
+   -------------------------------------------------------------------------- */
+.top-bar {
+    background-color: var(--primary-navy);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.8rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar-left, .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.top-bar-left i, .top-bar-right i {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
+
+.top-bar-right a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.top-bar-right a:hover {
+    color: var(--pharma-green);
+}
+
+.divider {
+    opacity: 0.3;
+}
+
+.admin-badge {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+/* Main Site Header */
+.site-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+}
+
+.site-header.scrolled {
+    padding: 0.4rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+    transition: height var(--transition-normal);
+}
+
+.site-header.scrolled .header-container {
+    height: 64px;
+}
+
+/* Brand Logo Styling */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+}
+
+.logo-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.brand-name {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    color: var(--primary-navy);
+}
+
+.brand-sub {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--pharma-green-dark);
+}
+
+.brand-pvt {
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+/* Navigation Links */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: nowrap;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    padding: 0.35rem 0.15rem;
+    position: relative;
+    white-space: nowrap;
+    transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--pharma-green);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--pharma-green);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* Header Actions & Mobile Toggle */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-navy);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO SECTION
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    padding: 4.5rem 0 5.5rem 0;
+    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #E6F6F3 100%);
+    overflow: hidden;
+}
+
+.hero-bg-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 168, 132, 0.06) 0%, rgba(30, 64, 175, 0.04) 50%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--bg-white);
+    color: var(--primary-navy);
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+}
+
+.hero-badge i {
+    color: var(--pharma-green);
+    width: 16px;
+    height: 16px;
+}
+
+.hero-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.03em;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 38rem;
+    line-height: 1.6;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.hero-metrics {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-lg);
+    width: fit-content;
+    box-shadow: var(--shadow-md);
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-value {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary-navy);
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.metric-divider {
+    width: 1px;
+    height: 30px;
+    background-color: var(--border-color);
+}
+
+/* Hero Interactive Visual Canvas */
+.hero-visual {
+    position: relative;
+}
+
+.visual-card-glass {
+    background: var(--primary-navy);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-dark);
+    position: relative;
+    overflow: hidden;
+    color: var(--bg-white);
+}
+
+.visual-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.visual-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.visual-dot.red { background-color: #EF4444; }
+.visual-dot.yellow { background-color: #F59E0B; }
+.visual-dot.green { background-color: #10B981; }
+
+.visual-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.logistics-graphic {
+    position: relative;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pulse-node.center-hub {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--pharma-green), var(--pharma-green-dark));
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-white);
+    font-weight: 700;
+    font-size: 0.7rem;
+    box-shadow: 0 0 30px rgba(0, 168, 132, 0.5);
+    z-index: 5;
+    animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(0, 168, 132, 0.6); }
+    70% { box-shadow: 0 0 0 20px rgba(0, 168, 132, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 168, 132, 0); }
+}
+
+.node-orbit {
+    position: absolute;
+    border: 1px stroke rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.sat-node {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.floating-pill {
+    position: absolute;
+    background: var(--bg-white);
+    color: var(--primary-navy);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 10;
+    animation: floatAnim 3s ease-in-out infinite alternate;
+}
+
+.floating-pill i { color: var(--pharma-green); }
+
+.pill-1 { top: -10px; right: 10px; }
+.pill-2 { bottom: -10px; left: 10px; animation-delay: 1.5s; }
+
+@keyframes floatAnim {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+/* --------------------------------------------------------------------------
+   6. TRUST STRIP
+   -------------------------------------------------------------------------- */
+.trust-strip {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.trust-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+}
+
+.trust-icon {
+    width: 42px;
+    height: 42px;
+    background-color: var(--pharma-green-light);
+    color: var(--pharma-green-dark);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.trust-info h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.trust-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   7. ABOUT SECTION & PILLARS
+   -------------------------------------------------------------------------- */
+.about-pillars {
+    margin-top: 2rem;
+}
+
+.pillar-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.pillar-card:hover, .pillar-card.active-pillar {
+    border-color: var(--pharma-green);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.pillar-icon {
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+    color: var(--bg-white);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.pillar-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.pillar-card p {
+    color: var(--text-muted);
+    font-size: 0.925rem;
+}
+
+/* Founder & Executive Leadership Styling */
+.founder-card-section {
+    margin-top: 3rem;
+}
+
+.founder-poster-card {
+    background: linear-gradient(135deg, #0B1F33 0%, #162E4A 50%, #0F2942 100%);
+    color: var(--bg-white);
+    border-radius: var(--radius-xl);
+    padding: 3rem 2rem 2rem 2rem;
+    box-shadow: var(--shadow-xl);
+    border: 2px solid var(--pharma-green);
+    position: relative;
+    overflow: hidden;
+}
+
+.founder-poster-card::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0, 168, 132, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.founder-circle-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.founder-circle-avatar {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 5px solid var(--pharma-green);
+    box-shadow: 0 12px 30px rgba(0, 168, 132, 0.4);
+    background-color: var(--primary-navy);
+}
+
+.founder-circle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 28% 18%; /* Focuses directly on Roshan Bhatt's face */
+}
+
+.founder-circle-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--pharma-green);
+    color: var(--bg-white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 1.1rem;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.founder-display-name {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--bg-white);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2rem;
+}
+
+.founder-display-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--pharma-green);
+    margin-bottom: 0.5rem;
+}
+
+.founder-tagline-quote {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-style: italic;
+    margin-bottom: 1.25rem;
+}
+
+.founder-bio-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 auto 1.5rem auto;
+}
+
+.founder-vision-box {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    max-width: 46rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    backdrop-filter: blur(8px);
+}
+
+.vision-quote-text {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--bg-white);
+    line-height: 1.6;
+}
+
+.poster-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 54rem;
+    margin: 2rem auto 0 auto;
+}
+
+.poster-pillar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--bg-white);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0.5rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+}
+
+.poster-pillar:hover {
+    border-color: var(--pharma-green);
+    transform: translateY(-3px);
+    background: rgba(0, 168, 132, 0.1);
+}
+
+.p-icon-circle {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--pharma-green);
+    color: var(--pharma-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.poster-bottom-bar {
+    background: rgba(0, 0, 0, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1.25rem 2rem;
+    margin: 2rem -2rem -2rem -2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.p-contact-group {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.p-contact-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--pharma-green);
+}
+
+.p-contact-link {
+    color: var(--bg-white);
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.p-contact-link:hover {
+    color: var(--pharma-green);
+}
+
+.p-slogan-text {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--pharma-green);
+}
+
+.founder-badge {
+    background: var(--pharma-green);
+    color: var(--bg-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    box-shadow: 0 4px 10px rgba(0, 168, 132, 0.3);
+}
+
+.founder-info .sub-heading {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--pharma-green);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.founder-name {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--bg-white);
+    margin-bottom: 0.25rem;
+}
+
+.founder-title {
+    font-size: 0.95rem;
+    color: var(--pharma-green);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.founder-quote {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(8px);
+    border-left: 4px solid var(--pharma-green);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.quote-icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    color: rgba(255, 255, 255, 0.1);
+    width: 36px;
+    height: 36px;
+}
+
+.founder-quote p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    font-style: italic;
+}
+
+.founder-contact-strip {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.founder-contact-chip {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--bg-white);
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--transition-fast);
+}
+
+.founder-contact-chip:hover {
+    background: var(--pharma-green);
+    border-color: var(--pharma-green);
+    color: var(--bg-white);
+    transform: translateY(-2px);
+}
+
+.text-white { color: #FFFFFF !important; }
+.text-green { color: var(--pharma-green) !important; }
+.hover\:text-green:hover { color: var(--pharma-green) !important; }
+.flex-1 { flex: 1; }
+
+/* --------------------------------------------------------------------------
+   8. BUSINESS OPERATIONS
+   -------------------------------------------------------------------------- */
+.operations-grid {
+    margin-top: 2rem;
+}
+
+.op-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: relative;
+    transition: var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+}
+
+.op-card:hover {
+    border-color: var(--secondary-blue);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.op-number {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--border-color);
+}
+
+.op-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--pharma-green-light);
+    color: var(--pharma-green);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.op-card h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.op-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   9. PRODUCT PORTFOLIO & SEARCH SYSTEM
+   -------------------------------------------------------------------------- */
+.portfolio-search-box {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 0.9rem 2.8rem 0.9rem 2.8rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.search-input-wrapper input:focus {
+    border-color: var(--pharma-green);
+    box-shadow: 0 0 0 4px rgba(0, 168, 132, 0.1);
+}
+
+.btn-clear {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: none;
+}
+
+.category-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.cat-chip {
+    background-color: var(--bg-slate);
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--primary-navy);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.cat-chip:hover, .cat-chip.active {
+    background-color: var(--primary-navy);
+    color: var(--bg-white);
+    border-color: var(--primary-navy);
+}
+
+/* Product Cards */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.product-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.product-card:hover {
+    border-color: var(--pharma-green);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.prod-tag {
+    align-self: flex-start;
+    background-color: var(--pharma-green-light);
+    color: var(--pharma-green-dark);
+    font-size: 0.725rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.prod-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary-navy);
+    margin-bottom: 0.35rem;
+}
+
+.prod-comp {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.prod-meta-list {
+    font-size: 0.825rem;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.prod-meta-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prod-meta-label {
+    color: var(--text-light);
+}
+
+.portfolio-notice {
+    background-color: #FEF3C7;
+    border: 1px solid #FCD34D;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    color: #92400E;
+}
+
+/* --------------------------------------------------------------------------
+   10. THERAPEUTIC AREAS
+   -------------------------------------------------------------------------- */
+.therapeutic-grid {
+    margin-top: 2rem;
+}
+
+.thera-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: var(--transition-normal);
+    cursor: pointer;
+}
+
+.thera-card:hover {
+    border-color: var(--secondary-blue);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.thera-icon {
+    width: 46px;
+    height: 46px;
+    background-color: #EFF6FF;
+    color: var(--secondary-blue);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.thera-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.thera-card p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.thera-link {
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--secondary-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. DISTRIBUTION NETWORK & INDIA MAP SVG
+   -------------------------------------------------------------------------- */
+.map-visual-box {
+    background-color: var(--primary-navy);
+    border-radius: var(--radius-xl);
+    padding: 1rem;
+    box-shadow: var(--shadow-xl);
+}
+
+.india-map-svg {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+}
+
+.dash-animated {
+    animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+    to { stroke-dashoffset: -100; }
+}
+
+.ping {
+    animation: pingAnim 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pingAnim {
+    75%, 100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+.network-badges {
+    margin-top: 1.5rem;
+}
+
+.net-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--bg-slate);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem;
+    border-radius: var(--radius-md);
+}
+
+.net-badge i {
+    color: var(--pharma-green);
+}
+
+.net-badge h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.net-badge span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.distribution-flow {
+    background-color: var(--bg-slate);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+}
+
+.flow-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.flow-steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.step-icon {
+    width: 32px;
+    height: 32px;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-navy);
+}
+
+.highlight-step .step-icon {
+    background-color: var(--pharma-green);
+    color: var(--bg-white);
+    border-color: var(--pharma-green);
+}
+
+.flow-arrow {
+    color: var(--text-light);
+    font-size: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. WHY US & COMPLIANCE
+   -------------------------------------------------------------------------- */
+.why-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: var(--transition-normal);
+}
+
+.why-card:hover {
+    border-color: var(--pharma-green);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.why-icon {
+    width: 44px;
+    height: 44px;
+    background-color: var(--pharma-green-light);
+    color: var(--pharma-green-dark);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.why-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.why-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.compliance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.compliance-list i {
+    color: var(--pharma-green);
+    vertical-align: middle;
+    margin-right: 0.35rem;
+}
+
+.credentials-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.cred-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.cred-icon {
+    color: var(--secondary-blue);
+    width: 32px;
+    height: 32px;
+}
+
+.cred-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.cred-status {
+    font-size: 0.75rem;
+    color: var(--pharma-green-dark);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   13. B2B PARTNERS & FORMS
+   -------------------------------------------------------------------------- */
+.partner-chips {
+    margin-top: 1rem;
+}
+
+.p-chip {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.b2b-contact-sidebar-card {
+    background-color: var(--primary-navy);
+    color: var(--bg-white);
+    border-radius: var(--radius-xl);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-dark);
+}
+
+.b2b-contact-sidebar-card h3 {
+    color: var(--bg-white);
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(0, 168, 132, 0.15);
+    color: var(--pharma-green);
+    border: 1px solid rgba(0, 168, 132, 0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.founder-mini-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+}
+
+.mini-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--pharma-green), var(--secondary-blue));
+    color: var(--bg-white);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid var(--pharma-green);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mini-founder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.founder-mini-card h4 {
+    color: var(--bg-white);
+    font-size: 0.95rem;
+}
+
+.contact-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.c-detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+}
+
+.c-detail-row i {
+    color: var(--pharma-green);
+    width: 20px;
+    height: 20px;
+    margin-top: 0.15rem;
+}
+
+.c-label {
+    display: block;
+    font-size: 0.725rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.c-detail-row a {
+    color: var(--bg-white);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.c-detail-row a:hover {
+    color: var(--pharma-green);
+}
+
+.b2b-form-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.form-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-header h3 {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    font-family: var(--font-body);
+    font-size: 0.925rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--pharma-green);
+    box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.1);
+}
+
+.bg-read {
+    background-color: var(--bg-slate);
+    cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   14. CAREERS & MEDIA
+   -------------------------------------------------------------------------- */
+.career-dept-grid {
+    margin-top: 1.5rem;
+}
+
+.dept-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 1.75rem;
+    border-radius: var(--radius-lg);
+}
+
+.dept-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--pharma-green-light);
+    color: var(--pharma-green);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.news-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-date {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.news-cat {
+    align-self: flex-start;
+    background-color: #EFF6FF;
+    color: var(--secondary-blue);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+}
+
+.news-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+
+.news-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   15. CONTACT SECTION
+   -------------------------------------------------------------------------- */
+.contact-info-card {
+    background-color: var(--primary-navy);
+    color: var(--bg-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+}
+
+.company-heading {
+    color: var(--bg-white);
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+}
+
+.tagline-text {
+    font-size: 0.85rem;
+    color: var(--pharma-green);
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.c-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--pharma-green);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-item h4 {
+    color: var(--bg-white);
+    font-size: 0.95rem;
+}
+
+.contact-item .text-muted {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+.map-placeholder-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px stroke rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+}
+
+.map-visual-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--pharma-green);
+    margin-bottom: 0.5rem;
+}
+
+.contact-form-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   16. FOOTER STYLING
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--primary-navy);
+    color: var(--bg-white);
+    padding: 4rem 0 2rem 0;
+    border-top: 4px solid var(--pharma-green);
+}
+
+.footer-brand h3 {
+    color: var(--bg-white);
+    font-size: 1.25rem;
+}
+
+.pvt-span {
+    font-size: 0.7rem;
+    color: var(--pharma-green);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.footer-tagline {
+    font-size: 0.85rem;
+    color: var(--pharma-green);
+    font-style: italic;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.footer-desc {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+}
+
+.footer-col h4 {
+    color: var(--bg-white);
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--pharma-green);
+}
+
+.footer-links li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.footer-links a:hover {
+    color: var(--pharma-green);
+    transform: translateX(3px);
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-legal-links {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.legal-link {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.legal-link:hover {
+    color: var(--pharma-green);
+}
+
+/* --------------------------------------------------------------------------
+   17. MODALS & TOASTS
+   -------------------------------------------------------------------------- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 31, 51, 0.75);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-xl);
+    width: 90%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.95);
+    transition: transform var(--transition-normal);
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-lg { max-width: 840px; }
+.modal-md { max-width: 640px; }
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-contact-strip {
+    color: var(--pharma-green-dark);
+    font-weight: 600;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.modal-contact-strip span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+/* Admin Tabs */
+.admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.admin-tab {
+    background: none;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    position: relative;
+}
+
+.admin-tab.active {
+    color: var(--pharma-green);
+}
+
+.admin-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--pharma-green);
+}
+
+.admin-tab-content {
+    display: none;
+}
+
+.admin-tab-content.active {
+    display: block;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.admin-table th, .admin-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: var(--bg-slate);
+    font-weight: 700;
+}
+
+.hidden { display: none !important; }
+
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-end { display: flex; justify-content: flex-end; }
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.toast {
+    background-color: var(--primary-navy);
+    color: var(--bg-white);
+    padding: 0.9rem 1.25rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-left: 4px solid var(--pharma-green);
+    animation: toastIn 0.3s ease forwards;
+}
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --------------------------------------------------------------------------
+   18. COMPREHENSIVE RESPONSIVE BREAKPOINTS (MOBILE & TABLET OPTIMIZATION)
+   -------------------------------------------------------------------------- */
+
+/* Form Input Auto-Zoom Prevention on Mobile Browsers */
+@media (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+    }
+}
+
+/* Header Navbar Breakpoint for Laptops & Tablets (Up to 1180px) */
+@media (max-width: 1180px) {
+    .mobile-toggle {
+        display: block !important;
+    }
+    .btn-header {
+        display: none !important;
+    }
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.25rem 1.75rem;
+        border-bottom: 3px solid var(--pharma-green);
+        box-shadow: 0 15px 30px rgba(11, 31, 51, 0.15);
+        display: none;
+        gap: 0;
+        z-index: 1000;
+    }
+    .nav-menu.active {
+        display: flex !important;
+    }
+    .nav-link {
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 0.7rem 0;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--primary-navy);
+        white-space: normal;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    .nav-link::after {
+        display: none;
+    }
+}
+
+/* Tablet & Medium Screens (768px to 1024px) */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+    }
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-cta-group, .hero-metrics {
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .trust-grid { grid-template-columns: repeat(3, 1fr); }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .b2b-partnership-wrapper { grid-template-columns: 1fr; }
+    .contact-info-card, .contact-form-card { padding: 2rem; }
+}
+
+/* Smartphone & Mobile Screens (Up to 768px) */
+@media (max-width: 768px) {
+    .section {
+        padding: 3.5rem 0;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar-content {
+        flex-direction: column;
+        gap: 0.4rem;
+        text-align: center;
+        padding: 0.25rem 0;
+    }
+    .top-bar-left, .top-bar-right {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+    }
+    .top-bar .divider {
+        display: none;
+    }
+
+    /* Sticky Mobile Header */
+    .header-container {
+        height: 64px;
+    }
+    .brand-name {
+        font-size: 1.1rem;
+    }
+    .brand-sub {
+        font-size: 0.6rem;
+    }
+    .logo-mark {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* Hero Section Mobile */
+    .hero-section {
+        padding: 3rem 0 4rem 0;
+    }
+    .hero-title {
+        font-size: 1.85rem;
+        line-height: 1.25;
+    }
+    .hero-description {
+        font-size: 1rem;
+    }
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+    }
+    .hero-cta-group .btn {
+        width: 100%;
+    }
+    .hero-metrics {
+        width: 100%;
+        justify-content: space-around;
+        padding: 0.85rem 0.5rem;
+    }
+    .metric-value {
+        font-size: 1.15rem;
+    }
+    .metric-label {
+        font-size: 0.7rem;
+    }
+
+    /* Hero Logistics Visual Canvas */
+    .logistics-graphic {
+        height: 210px;
+    }
+    .pulse-node.center-hub {
+        width: 80px;
+        height: 80px;
+        font-size: 0.65rem;
+    }
+    .sat-node {
+        font-size: 0.68rem;
+        padding: 0.3rem 0.6rem;
+    }
+    .floating-pill {
+        font-size: 0.72rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    /* Trust Strip */
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    .trust-card {
+        padding: 0.4rem;
+    }
+    .trust-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Grids & Cards */
+    .grid-2, .grid-3, .grid-4, .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    /* Category Chips Touch Horizontal Scroll */
+    .category-filters {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.6rem;
+        flex-wrap: nowrap;
+        scroll-snap-type: x mandatory;
+    }
+    .cat-chip {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        white-space: nowrap;
+    }
+
+    /* Founder Poster Showcase Card Mobile */
+    .founder-poster-card {
+        padding: 2.25rem 1.25rem 1.25rem 1.25rem;
+    }
+    .founder-circle-avatar {
+        width: 140px;
+        height: 140px;
+    }
+    .founder-display-name {
+        font-size: 1.75rem;
+    }
+    .founder-display-title {
+        font-size: 0.95rem;
+    }
+    .founder-vision-box {
+        padding: 1.25rem 1rem;
+    }
+    .vision-quote-text {
+        font-size: 0.95rem;
+    }
+    .poster-pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    .poster-pillar {
+        padding: 0.75rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    .poster-bottom-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+        padding: 1.25rem 1rem;
+    }
+    .p-contact-group {
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    /* India Map & Flow Chart */
+    .map-visual-box {
+        padding: 0.5rem;
+    }
+    .flow-steps {
+        gap: 0.75rem;
+        justify-content: center;
+    }
+
+    /* B2B Partnership & Contact Cards */
+    .b2b-contact-sidebar-card, .b2b-form-card, .contact-info-card, .contact-form-card {
+        padding: 1.5rem;
+    }
+
+    /* Modals Mobile */
+    .modal-content {
+        width: 95%;
+        max-height: 88vh;
+        border-radius: var(--radius-lg);
+    }
+    .modal-header {
+        padding: 1.25rem 1.5rem;
+    }
+    .modal-body {
+        padding: 1.25rem 1.5rem;
+    }
+    .admin-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Footer Mobile */
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .footer-legal-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.85rem;
+    }
+}
+
+/* Small Smartphone Screen Adjustments (Up to 480px) */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.75rem;
+    }
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+    .poster-pillars-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-quick-btns {
+        flex-direction: column;
+    }
+    .toast-container {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+    }
+    .toast {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+}
