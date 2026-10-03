@@ -8,134 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // 2. Initial Data Stores
-    const INITIAL_PRODUCTS = [
-        {
-            id: 'p1',
-            name: 'SwaroCef-500',
-            composition: 'Cefuroxime Axetil IP',
-            strength: '500 mg',
-            form: 'Tablet',
-            category: 'Anti-Infectives',
-            pack: '10 x 10 Strip Box',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p2',
-            name: 'SwaroVas-AT',
-            composition: 'Amlodipine 5mg + Atenolol 50mg',
-            strength: '55 mg Combo',
-            form: 'Tablet',
-            category: 'Cardiovascular',
-            pack: '10 x 15 Blister',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p3',
-            name: 'SwaroPanto-DSR',
-            composition: 'Pantoprazole 40mg + Domperidone 30mg SR',
-            strength: '70 mg',
-            form: 'Capsule',
-            category: 'Gastrointestinal',
-            pack: '10 x 10 Aluminum-Aluminum',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p4',
-            name: 'SwaroKast-L',
-            composition: 'Montelukast 10mg + Levocetirizine 5mg',
-            strength: '15 mg',
-            form: 'Tablet',
-            category: 'Respiratory',
-            pack: '10 x 10 Strip Box',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p5',
-            name: 'SwaroGel-Derm',
-            composition: 'Clobetasol 0.05% + Neomycin 0.5% Cream',
-            strength: '20 gm Tube',
-            form: 'Ointment / Gel',
-            category: 'Dermatology',
-            pack: '1 x 20g Tube',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p6',
-            name: 'SwaroNac-SP',
-            composition: 'Aceclofenac 100mg + Paracetamol 325mg + Serratiopeptidase 15mg',
-            strength: 'Triple Combination',
-            form: 'Tablet',
-            category: 'Pain Management',
-            pack: '10 x 10 Strip Box',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p7',
-            name: 'SwaroMet-SR 500',
-            composition: 'Metformin Hydrochloride Sustained Release',
-            strength: '500 mg',
-            form: 'Tablet',
-            category: 'Diabetes Care',
-            pack: '10 x 20 Blister',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p8',
-            name: 'SwaroVit-CZ',
-            composition: 'Vitamin C 500mg + Zinc Sulphate 50mg + Vitamin D3',
-            strength: 'Multi-nutrient',
-            form: 'Tablet',
-            category: 'Vitamins & Minerals',
-            pack: '10 x 15 Strip Box',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p9',
-            name: 'SwaroCal-D3',
-            composition: 'Calcium Carbonate 1250mg eq. to Calcium 500mg + Vit D3 250 IU',
-            strength: '500 mg + 250 IU',
-            form: 'Tablet',
-            category: 'Orthopaedics',
-            pack: '10 x 15 Blister',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p10',
-            name: 'SwaroGyn-Folic',
-            composition: 'L-Methylfolate 1mg + Pyridoxal 5-Phosphate + Methylcobalamin',
-            strength: 'Haematinic Formula',
-            form: 'Tablet',
-            category: 'Gynaecology',
-            pack: '10 x 10 Strip Box',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p11',
-            name: 'SwaroMol-650',
-            composition: 'Paracetamol IP Fast Release',
-            strength: '650 mg',
-            form: 'Tablet',
-            category: 'General Medicines',
-            pack: '10 x 15 Strip Box',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        },
-        {
-            id: 'p12',
-            name: 'SwaroGabar-NT',
-            composition: 'Gabapentin 300mg + Nortriptyline 10mg',
-            strength: '310 mg Combo',
-            form: 'Tablet',
-            category: 'Neuro / CNS',
-            pack: '10 x 10 Strip Box',
-            manufacturer: 'SWAROSH Authorized Distribution'
-        }
-    ];
+    // 2. Initial Data Stores (No invented medicine or brand names - strictly empty until added by company)
+    const INITIAL_PRODUCTS = [];
 
     // LocalStorage initialization for Products & Inquiries
     let products = JSON.parse(localStorage.getItem('swarosh_products')) || INITIAL_PRODUCTS;
-    if (!localStorage.getItem('swarosh_products')) {
-        localStorage.setItem('swarosh_products', JSON.stringify(INITIAL_PRODUCTS));
+    
+    // Clear old fake product names if previously saved in localStorage
+    if (products.some(p => p.name && p.name.startsWith('Swaro'))) {
+        products = [];
+        localStorage.setItem('swarosh_products', JSON.stringify([]));
     }
 
     let inquiries = JSON.parse(localStorage.getItem('swarosh_inquiries')) || [];
@@ -212,10 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (filtered.length === 0) {
             productsGrid.innerHTML = `
-                <div class="col-span-3 text-center p-8 bg-slate rounded-xl border border-color">
-                    <i data-lucide="package-x" style="width:48px;height:48px;color:var(--text-light);margin:0 auto 1rem auto;"></i>
-                    <h3 class="title-md">No Products Match Your Filter</h3>
-                    <p class="text-muted text-sm mt-1">Try searching with a different composition or select "All Categories".</p>
+                <div class="text-center p-8 bg-slate rounded-xl border border-color" style="grid-column: 1 / -1;">
+                    <i data-lucide="shield-alert" style="width:48px;height:48px;color:var(--pharma-green);margin:0 auto 1rem auto;"></i>
+                    <h3 class="title-md">Verified Wholesale Product Directory</h3>
+                    <p class="text-muted text-sm mt-2 max-w-3xl" style="margin-left:auto;margin-right:auto;">
+                        In compliance with Indian drug licensing laws, specific product lists, compositions, and pricing are supplied directly to licensed stockists, pharmacies, and institutional healthcare buyers upon verified request.
+                    </p>
+                    <div class="mt-4 flex gap-3 justify-center flex-wrap">
+                        <a href="#partners" class="btn btn-primary btn-sm"><i data-lucide="send"></i> Request B2B Product Catalog</a>
+                        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('open-admin-btn').click()"><i data-lucide="plus"></i> Add Product (Admin CMS)</button>
+                    </div>
                 </div>
             `;
             if (window.lucide) lucide.createIcons();
